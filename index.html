@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title><b>Nektarinky z Tesca</b></title>
+
+
+<style>
+:root {
+  --bg-dark: rgba(0,0,0,0.55);
+  --bg-nav: rgba(0,0,0,0.85);
+  --text: #fff;
+  --accent: #ff7a00;
+}
+
+
+html { scroll-behavior: smooth; }
+
+
+body {
+  margin: 0;
+  font-family: system-ui, Arial, sans-serif;
+  color: var(--text);
+  background:
+    linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
+    url("https://media.tenor.com/UlVPs48i7mgAAAAM/tesco-nektarynki.gif")
+    center / cover fixed no-repeat;
+}
+
+
+/* NAV */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--bg-nav);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 20px;
+}
+
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 18px;
+  margin: 0;
+  padding: 0;
+}
+
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+
+nav a.active { color: var(--accent); }
+
+
+/* TOP BANNER */
+.marquee {
+  background: #004381;
+  color: white;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.marquee span {
+  display: inline-block;
+  padding-left: 100%;
+  animation: scroll 14s linear infinite;
+}
+@keyframes scroll {
+  to { transform: translateX(-100%); }
+}
+
+
+/* HEADER */
+header {
+  padding: 90px 20px;
+  text-align: center;
+}
+
+
+/* SEARCH */
+.search {
+  text-align: center;
+  margin: 30px;
+}
+.search input {
+  padding: 12px;
+  width: 280px;
+  border-radius: 10px;
+  border: none;
+}
+
+
+/* CONTAINER */
+.container {
+  max-width: 1000px;
+  margin: auto;
+  padding: 20px;
+}
+
+
+.card {
+  background: var(--bg-dark);
+  border-radius: 18px;
+  padding: 25px;
+  margin-bottom: 25px;
+  backdrop-filter: blur(6px);
+}
+
+
+/* BUTTONS */
+button {
+  background: var(--accent);
+  border: none;
+  padding: 10px 15px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+
+/* GALLERY */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+  gap: 15px;
+}
+.gallery img {
+  width: 100%;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+
+/* LIGHTBOX */
+#lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.85);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+#lightbox img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 15px;
+}
+
+
+/* CART */
+#cart {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  background: var(--bg-nav);
+  padding: 15px;
+  border-radius: 15px;
+  width: 220px;
+}
+
+
+/* SCROLL TOP */
+#topBtn {
+  position: fixed;
+  left: 20px;
+  bottom: 20px;
+  display: none;
+}
+
+
+/* COOKIE */
+#cookies {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: var(--bg-nav);
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+}
+</style>
+</head>
+
+
+<body>
+
+
+<div class="marquee">
+  <span class="marquee-content">
+    <img src="" alt="">
+    <b>Tesco akce – Nektarinky za super cenu!</b>
+  </span>
+</div>
+
+
+<nav>
+  <strong>Tesco </strong>
+  <ul>
+    <li><a href="#home">Domů</a></li>
+    <li><a href="#about">O ovoci</a></li>
+    <li><a href="#shop">Obchod</a></li>
+    <li><a href="#gallery">Galerie</a></li>
+  </ul>
+</nav>
+
+
+<header id="home">
+  <h1>Nektarinky z Tesca</h1>
+  <p>Moderní demo web s reálnými funkcemi</p>
+</header>
+
+
+<div class="search">
+  <input placeholder="Vyhledat články..." onkeyup="filterText(this.value)">
+</div>
+
+
+<div class="container">
+
+
+<div class="card searchable" id="about">
+<h2>Nektarinky</h2>
+<p>Plné vitamínů, ideální do smoothie, dezertů i salátů.</p>
+</div>
+
+
+<div class="card searchable">
+<h2>Zdraví</h2>
+<p>Podporují trávení a imunitu.</p>
+</div>
+
+
+<div class="card" id="shop">
+<h2>Obchod</h2>
+<p>Nektarinky 1 kg – 49 Kč</p>
+<button onclick="addToCart()">Přidat do košíku</button>
+</div>
+
+
+<div class="card" id="gallery">
+<h2>📸 Galerie</h2>
+<div class="gallery">
+<img src="https://images.pexels.com/photos/102104/pexels-photo-102104.jpeg" onclick="openLightbox(this)">
+<img src="https://media1.tenor.com/m/A_XixwIPZcgAAAAd/stan-twt-skeleton-banging-shield.gif" onclick="openLightbox(this)">
+<img src="data:image/jpeg;base64,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" onclick="openLightbox(this)">
+</div>
+</div>
+
+
+</div>
+
+
+<div id="cart">
+<h4>Košík</h4>
+<p>Kusy: <span id="count">0</span></p>
+</div>
+
+
+<button id="topBtn" onclick="scrollToTop()">⬆️</button>
+
+
+<div id="lightbox" onclick="this.style.display='none'">
+  <img id="lightboxImg">
+</div>
+
+
+<div id="cookies">
+  <span>Tento web používá cookies 🍪</span>
+  <button onclick="acceptCookies()">OK</button>
+</div>
+
+
+<script>
+let count = Number(localStorage.getItem("cart")) || 0;
+document.getElementById("count").innerText = count;
+
+
+function addToCart(){
+  count++;
+  localStorage.setItem("cart",count);
+  document.getElementById("count").innerText = count;
+}
+
+
+function filterText(v){
+  document.querySelectorAll(".searchable").forEach(c=>{
+    c.style.display = c.innerText.toLowerCase().includes(v.toLowerCase())
+    ? "block":"none";
+  });
+}
+
+
+function openLightbox(img){
+  document.getElementById("lightboxImg").src = img.src;
+  document.getElementById("lightbox").style.display="flex";
+}
+
+
+window.addEventListener("scroll",()=>{
+  document.getElementById("topBtn").style.display =
+    window.scrollY>300?"block":"none";
+});
+
+
+function scrollToTop(){ window.scrollTo({top:0,behavior:"smooth"}); }
+
+
+function acceptCookies(){
+  localStorage.setItem("cookies","yes");
+  document.getElementById("cookies").style.display="none";
+}
+
+
+if(localStorage.getItem("cookies")==="yes"){
+  document.getElementById("cookies").style.display="none";
+}
+</script>
+
+
+<style>
+.marquee-content {
+  display: inline-flex;
+  align-items: center;
+  gap: 15px;
+  padding-left: 100%;
+  animation: scroll 20s linear infinite;
+}
+
+
+.marquee-content img {
+  height: 28px;
+ 
+  filter: brightness(0) invert(1); /* aby bylo bílé */
+}
+
+
+
+
+
+
+</style>
+
+
+</body>
+</html>
