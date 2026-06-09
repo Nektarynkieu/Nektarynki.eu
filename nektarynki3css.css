@@ -1,0 +1,149 @@
+body{
+    margin:0;
+    padding:0;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    background-image:url(https://images.unsplash.com/photo-1567306226416-28f0efdc88ce?q=80&w=1974&auto=format&fit=crop);
+
+    background-size:cover;
+    background-attachment:fixed;
+    background-repeat:no-repeat;
+
+    color:white;
+
+    cursor:url(https://cur.cursors-4u.net/food/foo-7/foo635.cur),auto;
+}
+
+.overlay{
+    background:rgba(0,0,0,0.6);
+    min-height:100vh;
+}
+
+nav{
+    border-bottom:3px solid white;
+    backdrop-filter:blur(5px);
+}
+
+nav ul{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    list-style:none;
+
+    margin:0;
+    padding:20px;
+}
+
+nav h1{
+    font-size:40px;
+    text-shadow:0px 0px 10px orange;
+}
+
+main{
+    width:70%;
+    margin:auto;
+    padding:40px;
+}
+
+.info{
+    background:rgba(255,255,255,0.08);
+
+    border:3px solid white;
+    border-radius:20px;
+
+    padding:30px;
+    margin-bottom:50px;
+
+    backdrop-filter:blur(8px);
+}
+
+.info h2{
+    font-size:35px;
+}
+
+.info p{
+    font-size:20px;
+    line-height:1.8;
+}
+
+.meme-grid{
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+
+    gap:25px;
+}
+
+.meme{
+    border:3px solid white;
+    border-radius:20px;
+
+    overflow:hidden;
+
+    transition:0.3s;
+
+    background:black;
+}
+
+.meme:hover{
+    transform:scale(1.05);
+
+    box-shadow:0px 0px 25px orange;
+}
+
+.meme img{
+    width:100%;
+    height:250px;
+
+    object-fit:cover;
+}
+
+.meme h3{
+    text-align:center;
+    padding:15px;
+    font-size:22px;
+}
+
+.reklama{
+    position:fixed;
+
+    right:20px;
+
+    width:180px;
+
+    border:3px solid white;
+    border-radius:15px;
+
+    overflow:hidden;
+
+    transition:0.3s;
+}
+
+.reklama:hover{
+    transform:scale(1.05);
+}
+
+.reklama img{
+    width:100%;
+    display:block;
+}
+
+.rek1{
+    top:120px;
+}
+
+.rek2{
+    top:350px;
+}
+
+.rek3{
+    top:580px;
+}
+
+footer{
+    text-align:center;
+    padding:40px;
+    font-size:20px;
+}

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Nektarynki 2.0</title>
+<link rel="stylesheet" href="nektarynki20css.css">
+
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <span>🔥 Tesco Nektarynki Mega Web 🔥</span>
+</div>
+
+<!-- NAV -->
+<nav>
+  <h2>Nektarynki</h2>
+
+  <ul>
+    <li><a href="#home">Domů</a></li>
+    <li><a href="#gallery">Galerie</a></li>
+    <li><a href="#about">Info</a></li>
+    <li><a href="#shop">Shop</a></li>
+    <li><a href="#contact">Kontakt</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<header id="home">
+
+  <div class="overlay"></div>
+
+ 
+  <img class="hero-img" src="https://pelnydziob.pl/wp-content/uploads/2025/07/swieze-nektarynki.jpg" alt="">
+
+  <div class="hero-text">
+    <h1>Nektarynki Web 4.0</h1>
+    <p>nejvíc tuff ovoce v tesku</p>
+    <button onclick="scrollToGallery()">Galerie</button>
+  </div>
+
+</header>
+
+<!-- MAIN -->
+<div class="container">
+
+  <!-- ABOUT -->
+  <section class="card" id="about">
+
+    <h2>🍑 O Nektarynkách</h2>
+
+    <p>
+      Nektarynka (Prunus persica var. nucipersica) – odmiana (a właściwie grupa odmian) brzoskwini zwyczajnej, którą od brzoskwini odróżnia przede wszystkim gładka (niewłochata) skórka owoców. Pochodzenie nektarynek przez długi czas było zagadką. Podejrzewano, że jest to mieszaniec brzoskwini i śliwy. Jednak badania genetyczne wykazały, że brak charakterystycznego omszenia to skutek ujawnienia się genu recesywnego, odpowiedzialnego za tę cechę rośliny.
+    </p>
+
+  </section>
+
+  <!-- GALLERY -->
+  <section class="card" id="gallery">
+
+    <h2>📸 Galerie</h2>
+
+    <div class="gallery">
+
+      <!-- OBRÁZKY -->
+      <img src="images.jpg" onclick="openLightbox(this)">
+      <img src="https://pelnydziob.pl/wp-content/uploads/2025/07/soczysty-miazsz-nektarynki.jpg" onclick="openLightbox(this)">
+      <img src="https://www.budujpraktycznie.pl/wp-content/uploads/2024/05/Pielegnacja-nektarynki-w-doniczce.jpg" onclick="openLightbox(this)">
+      <img src="https://atlasdiet.pl/wp-content/uploads/2024/10/nektarynki.jpg" onclick="openLightbox(this)">
+      <img src="https://gardenportal.pl/wp-content/uploads/2021/09/nektarynki-1024x682.jpg" onclick="openLightbox(this)">
+      <img src="https://technologzywnosciradzi.pl/wp-content/uploads/2022/02/1-4.jpg" onclick="openLightbox(this)">
+
+    </div>
+
+  </section>
+
+  <!-- SHOP -->
+  <section class="card" id="shop">
+
+    <h2>🛒 Shop</h2>
+
+    <div class="shop-box">
+
+      <!-- OBRÁZEK PRODUKTU -->
+      <img src="https://lh3.googleusercontent.com/drive-storage/AJQWtBNVMzZzECI6ShfecZOxu0aOyJYE0LdOoWgUgIZweH9Pemk24Ixglfo2xbjQDBasiNUAlcLDoKEAexi89XNt-9agfWZETx5HbGerWg2AHFm75nZ3TQ=w1920-h953?auditContext=forDisplay" alt="">
+
+      <div>
+        <h3>Nektarynki Premium</h3>
+        <p>49 Kč / kg</p>
+
+        <button onclick="addCart()">
+          Přidat do košíku
+        </button>
+      </div>
+
+    </div>
+
+  </section>
+
+  
+  <section class="card">
+
+    <h2>💀 Meme sekce</h2>
+
+    <div class="meme-grid">
+
+      <img src="nektarynkiimagee.png" onclick="openLightbox(this)">
+      <img src="https://i.ytimg.com/vi/LnhCcl1v8eo/maxresdefault.jpg" onclick="openLightbox(this)">
+      <img src="nektarynkicortisol.png" onclick="openLightbox(this)">
+      <img src="" onclick="openLightbox(this)">
+
+    </div>
+
+  </section>
+
+  
+  <section class="card">
+
+    <h2>🎬 Video</h2>
+
+   
+    <video controls width="100%">
+      <source src="" type="video/mp4">
+    </video>
+
+  </section>
+
+  
+  <section class="card">
+
+    <h2>🔊 Zvuky</h2>
+
+    <audio controls>
+      <source src="" type="audio/mpeg">
+    </audio>
+
+  </section>
+
+  <!-- CONTACT -->
+  <section class="card" id="contact">
+
+    <h2>📩 Kontakt</h2>
+
+    <input type="text" placeholder="Jméno">
+    <input type="email" placeholder="Email">
+    <textarea placeholder="Zpráva"></textarea>
+
+    <button>Odeslat</button>
+
+  </section>
+
+</div>
+
+<!-- CART -->
+<div id="cart">
+
+  <h3>🛒 Košík</h3>
+
+  <p>
+    Kusy:
+    <span id="count">0</span>
+  </p>
+
+</div>
+
+<!-- LIGHTBOX -->
+<div id="lightbox" onclick="closeLightbox()">
+
+  <img id="lightboxImg">
+
+</div>
+
+<!-- TOP BUTTON -->
+<button id="topBtn" onclick="topScroll()">
+⬆
+</button>
+
+<script>
+
+let count = 0;
+
+function addCart(){
+  count++;
+
+  document.getElementById("count").innerText = count;
+}
+
+function openLightbox(img){
+
+  document.getElementById("lightbox").style.display = "flex";
+
+  document.getElementById("lightboxImg").src = img.src;
+}
+
+function closeLightbox(){
+
+  document.getElementById("lightbox").style.display = "none";
+}
+
+window.addEventListener("scroll", ()=>{
+
+  if(window.scrollY > 300){
+    document.getElementById("topBtn").style.display = "block";
+  }
+  else{
+    document.getElementById("topBtn").style.display = "none";
+  }
+
+})
+
+function topScroll(){
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  })
+
+}
+
+function scrollToGallery(){
+
+  document.getElementById("gallery").scrollIntoView({
+    behavior:"smooth"
+  })
+
+}
+
+</script>
+
+</body>
+</html>
+*{
